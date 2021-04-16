@@ -1,0 +1,51 @@
+body {
+
+    background-color: #696969;
+}
+
+h1 {
+
+    text-align: center;
+    color: white;
+}
+
+#gameContainer {
+
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.gameSection {
+
+    width: 75%;
+    background-color: #d3d3d3;
+    margin-right: 45px;
+    border-radius: 50px;
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.button {
+
+    width: 20px;
+    height: 20px;
+
+}
+
+.indexSection {
+
+    width: 35%;
+    background-color: #d3d3d3;
+    padding: 5px;
+    text-align: center;
+    
+
+}
