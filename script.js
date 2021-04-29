@@ -3,82 +3,66 @@
     - C'est un jeu qui ce joue à deux
     - Le jeu se joue en 12 étapes (on peut en rajouter ou en enlever pour moins ou plus de difficulté)
     - Un des joueurs doit créer une combinaison secrète de 4 pions de couleur mis dans 4 trous
-    - Le joueur qui devine devra trouver la combinaison en maximum 12 étapes
-    - Un indice de réussite sera indiquer au joueur à chaque proposition (par exemple pion de bonne couleur mais mal placé va être matérialisé par un indice de couleur gris, pion de mauvaise couleur et mal placé égal indice de couleur noir, pion bien placé et de bonne couleur égal indice de couleur blanc)
+    - Le joueur qui devine devra trouver la combinaison en maximum 12 étapes, les étapes corresponderont à des lignes
+    - Un indice de réussite sera indiquer au joueur à chaque proposition (par exemple un pion de mauvaise couleur et mal placé égal indice de couleur noir, pion bien placé et de bonne couleur égal indice de couleur blanc)
     - Le joueur est gagnant si il trouve la combinaison en 12 propositions ou moins
     - S'il échoue c'est celui qui a fait la combinaison qui gagne
     
 */
 
+var Mastermind = {
 
-// Variable dont on va avoir besoin dans le jeu
-var nombrePropositions = [];
-var indice = ["noir", "gris", "blanc"];
-var joueur = ["joueurDevine", " joueurCombinaison"];
-var trou = ["1", "2", "3", "4"];
-var trouIndice = ["1", "2", "3", "4"];
-var pion = ["1", "2", "3", "4"];
-var couleur = ["vert", "jaune", "bleu", "rouge", "orange", "violet"];
-var combinaisonRechercher = [];
+    // Variable dont on va avoir besoin dans le jeu
 
+    //couleur que le joueur pourra utiliser
+    couleur: {
 
-let gameContainer = document.getElementById("gameContainer");
-let gameSection = document.querySelector(".gameSection");
-let button = document.querySelectorAll(".button");
+        vert: '#008000',//vert
+        jaune: '#FFFF00',//jaune
+        bleu: '#0000FF',//bleu
+        rouge: '#FF0000',//rouge
+        orange: '#FFA500',//orange
+        violet: '#9370DB',//violet
+    },
 
-function createCombination() {
+    //réglage de la partie
+    paramètre: {
 
-    
-    
-}
+        lignes: 12,//ligne disponible pour arriver à la solution du résultat
+        colonnes: 4,//colonnes qui sera remplis des couleurs par le joueur
+        couleurs: 6,//couleur disponible
+    },
 
-createCombination();
+    //valeur courante de la progression de la partie
+    jeu: {
 
-/*
-function getRandomColor(min, max) {
-    
-    return Math.floor(Math.random() * (max - min) + min);
-}
+        turn: 1,//tour en cours
+        colonne: 1,//colonne en cours
+        selectionDeCouleur: new Array(),//sélection de la couleur dans un tableau dédié aux choix des couleurs
+        solution: new Array(),//solution de la partie
+    },
 
-console.log(getRandomColor(0,4));
-*/
+    //indice qui indiquera au joueur le statut des couleurs qu'il aura placé
+    indice: {
 
-// Cette fonction va parcourrir les 4 boutons, un nombre aléatoire est créer, pour chaque boutons parcouru on lui affecte un nombre aléatoires compris ebtre 0 et 5 correspondant au 6 couleurs
-function createRandomNumber() {
+        noir: '#000000',//noir pour un pion mal placé 
+        blanc: '#FFFFFF',//blanc pour un pion bien placé
+    },
 
-    for(i = 0; i <= 3; i++) {
+    //fonction qui va venir initialiser la partie (créer le tableau/la grille du jeu, remettre les données à zéro ainsi que de définir la solution du jeu)
+    initialisationDuJeu: function() {
 
-        var nombreAleatoire = Math.floor(Math.random() * (6 - 0) + 0);
-        console.log(nombreAleatoire);
-        
-        if(nombreAleatoire == 0) {
- 
-         combinaisonRechercher[i] = couleur[0];
- 
-        } else if(nombreAleatoire == 1) {
- 
-         combinaisonRechercher[i] = couleur[1];
- 
-        } else if(nombreAleatoire == 2) {
- 
-         combinaisonRechercher[i] = couleur[2];
- 
-        } else if(nombreAleatoire == 3) {
- 
-         combinaisonRechercher[i] = couleur[3];
- 
-        } else if(nombreAleatoire == 4) {
- 
-         combinaisonRechercher[i] = couleur[4];
- 
-        } else if(nombreAleatoire == 5) {
- 
-         combinaisonRechercher[i] = couleur[5];
- 
-        }
- 
+        this.dessinerPlateau();
+        this.remettreDonneesAZero();
+        this.solutionDuJeu();
+
+    },
+
+    //fonction qui va dessiner le plateau du jeu
+    dessinerPlateau: function() {
+
+        let plateau = document.getElementById('plateau');
+        plateau.innerHTML = '';
+
     }
-
 }
-
-createRandomNumber();
