@@ -49,11 +49,6 @@ var Mastermind = {
         blanc: '#FFFFFF',//blanc pour un pion bien placé
     },
 
-    direBonjour: function() {
-
-        console.log('Bonjour');
-    },
-
     //fonction qui va dessiner le plateau du jeu
     dessinerPlateau: function() {
 
@@ -161,10 +156,19 @@ var Mastermind = {
 
     },
 
+    //fonction qui va remettre le joueur sur la première ligne et la première colonne
+    remettreDonneesAZero: function() {
+
+        this.jeu['tour'] = 1;
+        this.jeu['colonne'] = 1;
+
+        document.getElementById('tour-1').className = 'selected';
+        document.getElementById('tour-1-1').className = 'selected';
+    },
+
     //fonction qui va venir initialiser la partie (créer le tableau/la grille du jeu, remettre les données à zéro ainsi que de définir la solution du jeu)
     initialisationDuJeu: function() {
         
-        this.direBonjour();
         this.dessinerPlateau();
         this.remettreDonneesAZero();
         this.solutionDuJeu();
