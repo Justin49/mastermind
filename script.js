@@ -120,6 +120,14 @@ var Mastermind = {
 
         }
 
+        this.selectionDeCouleur();
+
+
+    },
+
+    //fonction qui va permettre au joueur de sélectionner sa couleur
+    selectionDeCouleur: function() {
+
         selectionDeCouleur = document.getElementById('selectionDeCouleur');
         selectionDeCouleur.innerHTML = '';
 
@@ -150,7 +158,7 @@ var Mastermind = {
 
         }
 
-        //la ligne sera l'enfant de la div sectionDeCouleur
+        //la ligne sera l'enfant de la div sélectionDeCouleur
         selectionDeCouleur.appendChild(line);
 
 
@@ -159,11 +167,29 @@ var Mastermind = {
     //fonction qui va remettre le joueur sur la première ligne et la première colonne
     remettreDonneesAZero: function() {
 
+        //on remet le tour du joueur à 1, on remet le joueur à la 1ère colonne
         this.jeu['tour'] = 1;
         this.jeu['colonne'] = 1;
 
+        //La classe selected permettant au joueur de sélectionner des couleurs sera sur la 1ère colonne et la première ligne
         document.getElementById('tour-1').className = 'selected';
         document.getElementById('tour-1-1').className = 'selected';
+    },
+
+    //fonction qui va permettre au joueur de trouver la solution du jeu
+    solutionDuJeuATrouver: function() {
+
+        //on céer un nouveau tableau contenant la solution du jeu
+        this.jeu['solution'] = new Array();
+
+        //on parcours les colonnes
+        for(i = 1; i <= this.parametre['colonnes']; i++) {
+
+            //on choisis un nombre entier aléatoire pour le multiplier par le nombre de colonne
+            color = parseInt(Math.random()*this.parametre['colonnes'])+1;
+            //on regarde si la couleur mis dans les colonnes est la même que pour le jeu
+            this.jeu['solution'][i] = color;
+        }
     },
 
     //fonction qui va venir initialiser la partie (créer le tableau/la grille du jeu, remettre les données à zéro ainsi que de définir la solution du jeu)
@@ -171,7 +197,7 @@ var Mastermind = {
         
         this.dessinerPlateau();
         this.remettreDonneesAZero();
-        this.solutionDuJeu();
+        this.solutionDuJeuATrouver();
 
     },
 

@@ -23,3 +23,49 @@ h1 {
     text-align: center;
     color: white;
 }
+
+/* Plateau */
+div {
+
+    border-collapse: collapse;
+    margin-left: 850px;
+
+}
+
+div td {
+
+    border: solid 1px #888;
+    padding: 5px;
+    text-align: center;
+
+}
+
+div tr.selected td {
+
+    background: #bfd1ff;
+}
+
+div tr.selected td.selected {
+
+    background: #dce6ff;
+}
+
+div tr td.valid {
+
+    display:  none;
+}
+
+div tr.selected td.valid {
+
+    display: table-cell;
+}
+
+.pion {
+
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: solid 1px #888;
+}
+
